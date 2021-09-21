@@ -32,11 +32,11 @@ class ProfileController extends Controller
     {
         $cond_title = $request->cond_title;
         if ($cond_title != '') {
-            $posts = Profile::where('title', $cond_title)->get();
+            $posts = Profile::where('name', $cond_title)->get();
         } else {
             $posts = Profile::all();
         }
-        return view('admin.news.index', ['posts' => $posts, 'cond_title' => $cond_title]);
+        return view('admin.profile.index', ['posts' => $posts, 'cond_title' => $cond_title]);
     }
 
     public function edit(Request $request)
@@ -49,7 +49,7 @@ class ProfileController extends Controller
     }
 
 
-    public function update()
+    public function update(Request $request)
     {
         $this->validate($request, Profile::$rules);
         $profile = Profile::find($request->id);
@@ -59,12 +59,20 @@ class ProfileController extends Controller
         $profile->fill($profile_form)->save();
         
         $history = new Record();
-        $history->news_id = $profile->id;
+        $history->profile_id = $profile->id;
         $history->edited_at = Carbon::now();
         $history->save();
 
-        return redirect('admin/profile/edit');
+        return redirect()->back();
     }
+    
+    public function delete(Request $request)
+    {
+        $profile = Profile::find($request->id);
+        $profile->delete();
+        
+        return redirect('admin/profile/');
+    }  
 
 }
  

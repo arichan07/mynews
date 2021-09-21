@@ -23,19 +23,19 @@
                     <div class="form-group row">
                         <label class="col-md-2" for="body">gender</label>
                         <div class="col-md-10">
-                            <input type="text" name="gender" rows="20">{{ $profile_form->gender }}</textarea>
+                            <input type="text" name="gender" value='{{ $profile_form->gender }}'>
                         </div>
                     </div>
                     <div class="form-group row">
                         <label class="col-md-2" for="body">hobby</label>
                         <div class="col-md-10">
-                            <input type="text" name="hobby" rows="20">{{ $profile_form->hobby }}</textarea>
+                            <input type="text" name="hobby" value='{{ $profile_form->hobby }}'>
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label class="col-md-2" for="body">introdaction</label>
+                        <label class="col-md-2" for="body">introduction</label>
                         <div class="col-md-10">
-                            <input type="text" name="introdaction" rows="20">{{ $profile_form->introdaction }}</textarea>
+                            <input type="text" name="introduction" value="{{ $profile_form->introduction }}">
                         </div>
                     </div>
                     <div class="form-group row">
